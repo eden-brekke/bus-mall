@@ -34,7 +34,6 @@ new Items('bag');
 new Items('banana');
 new Items('bathroom');
 new Items('boots');
-new Items('boots');
 new Items('breakfast');
 new Items('bubblegum');
 new Items('chair');
@@ -117,7 +116,7 @@ function handleShowResults(event){  //eslint-disable-line
   if(selectionsAllowed === 0){
     for(let i = 0; i < allItems.length; i++){
       let li = document.createElement('li');
-      li.textContent = `${allItems[i].name} was viewed ${allItems[i].views} times, and was voted for ${allItems[i].clicks} times.`;
+      li.textContent = `${allItems[i].name} was viewed ${allItems[i].views} times, and was voted for ${allItems[i].selected} times.`;
       showResults.appendChild(li);
     }
   }
