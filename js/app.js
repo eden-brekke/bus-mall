@@ -2,7 +2,7 @@
 
 // Global Variables
 
-let selectionsAllows = 25;
+let selectionsAllowed = 25;
 
 // item storage
 let allItems =[];
@@ -24,7 +24,7 @@ function Items(name, fileExtension = 'jpg'){
   this.name = name;
   this.views = 0;
   this.selected = 0;
-  this.src = `img/${name}.${fileExtension}`;
+  this.src = `assets/${name}.${fileExtension}`;
 
   allItems.push(this);
 }
@@ -49,3 +49,76 @@ new Items('tauntaun');
 new Items('unicorn');
 new Items('water-can');
 new Items('wine-glass');
+
+console.log(allItems);
+
+// random number between 0 and length of items array -1
+function getRandomIndex(){
+  return Math.floor(Math.random()*allItems.length);
+}
+
+// render imgs (only 2 for now)
+
+function renderImgs(){
+  let randomItem = [];
+  let itemOneIndex = getRandomIndex();
+  let itemTwoIndex = getRandomIndex();
+  let itemThreeIndex = getRandomIndex();
+
+  while(randomItem[0] === randomItem[1]){
+    randomItem[1] = getRandomIndex();
+  }
+  randomItem.push(getRandomIndex());
+
+  while(randomItem[2] === randomItem[0] || randomItem[2] === randomItem[1]);{
+    randomItem[2] = getRandomIndex();
+  }
+  // think Im getting an infinite loop
+
+  imgOne.src = allItems[itemOneIndex].src;
+  imgOne.alt = allItems[itemOneIndex].name;
+  allItems[itemOneIndex].views++;
+
+  imgTwo.src = allItems[itemTwoIndex].src;
+  imgTwo.alt = allItems[itemTwoIndex].name;
+  allItems[itemTwoIndex].views++;
+
+  imgThree.src = allItems[itemThreeIndex].src;
+  imgThree.alt = allItems[itemThreeIndex].name;
+  allItems[itemThreeIndex].views++;
+}
+
+renderImgs();
+
+// Event listeners
+
+
+function handleClick(event){
+  selectionsAllowed--;
+  let imgClicked = event.target.alt;
+
+  for(let i = 0; i < allItems.length; i++){
+    if(imgClicked === allItems[i].name){
+      allItems[i].selected++;
+    }
+  }
+  renderImgs();
+
+  if(selectionsAllowed === 0){
+    myContainer.removeEventListener('click', handleClick);
+  }
+}
+
+function handleShowResults(){
+  if(selectionsAllowed === 0){
+    for(let i = 0; i < allItems.length; i++);{
+      let li = document.createElement('li');
+      li.textContent = `${allItems[i].name} was viewed ${allItems[i].views} and was selected ${allItems[i].selected} times.`;
+      showResults.appendChild(li);
+    }
+  }
+}
+// grab what we want to listen to
+myContainer.addEventListener('click', handleClick);
+
+resultBtn.addEventListener('click', handleShowResults);
