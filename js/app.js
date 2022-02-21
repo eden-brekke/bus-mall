@@ -29,3 +29,23 @@ function Items(name, fileExtension = 'jpg'){
   allItems.push(this);
 }
 
+new Items('bag');
+new Items('banana');
+new Items('bathroom');
+new Items('boots');
+new Items('boots');
+new Items('breakfast');
+new Items('bubblegum');
+new Items('chair');
+new Items('cthulhu');
+new Items('dog-duck');
+new Items('dragon');
+new Items('pen');
+new Items('pet-sweep');
+new Items('scissors');
+new Items('shark');
+new Items('sweep', 'png');
+new Items('tauntaun');
+new Items('unicorn');
+new Items('water-can');
+new Items('wine-glass');
