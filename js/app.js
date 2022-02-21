@@ -6,7 +6,7 @@ let selectionsAllowed = 25; // decremet to end item selection
 // let selectionsAllowed = 0; to end item selection
 
 // item storage
-let allItems =[]; 
+let allItems =[];
 
 // Dom windows
 let myContainer = document.getElementById('container');
@@ -66,9 +66,14 @@ function renderImgs(){
   let itemThreeIndex = getRandomIndex();
 
 
-  while (itemOneIndex === itemTwoIndex || itemOneIndex === itemThreeIndex || itemTwoIndex === itemThreeIndex){
-    itemThreeIndex = getRandomIndex();
+  while (itemOneIndex === itemTwoIndex){
     itemTwoIndex = getRandomIndex();
+  }
+  while (itemTwoIndex === itemThreeIndex){
+    itemThreeIndex = getRandomIndex();
+  }
+  while (itemOneIndex === itemThreeIndex){
+    itemOneIndex = getRandomIndex();
   }
 
   imgOne.src = allItems[itemOneIndex].src;
@@ -106,15 +111,18 @@ function handleClick(event){
   }
 }
 
-function handleShowResults(){
+function handleShowResults(event){  //eslint-disable-line
+  // if no more votes - then render a list
+
   if(selectionsAllowed === 0){
-    for(let i = 0; i < allItems.length; i++);{
+    for(let i = 0; i < allItems.length; i++){
       let li = document.createElement('li');
-      li.textContent = `${allItems[i].name} was viewed ${allItems[i].views} and was selected ${allItems[i].selected} times.`;
+      li.textContent = `${allItems[i].name} was viewed ${allItems[i].views} times, and was voted for ${allItems[i].clicks} times.`;
       showResults.appendChild(li);
     }
   }
 }
+
 // grab what we want to listen to
 myContainer.addEventListener('click', handleClick);
 
