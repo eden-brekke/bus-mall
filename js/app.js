@@ -2,10 +2,11 @@
 
 // Global Variables
 
-let selectionsAllowed = 25;
+let selectionsAllowed = 25; // decremet to end item selection
+// let selectionsAllowed = 0; to end item selection
 
 // item storage
-let allItems =[];
+let allItems =[]; 
 
 // Dom windows
 let myContainer = document.getElementById('container');
@@ -54,27 +55,34 @@ console.log(allItems);
 
 // random number between 0 and length of items array -1
 function getRandomIndex(){
-  return Math.floor(Math.random()*allItems.length);
+  return Math.floor(Math.random()* allItems.length);
 }
 
 // render imgs (only 2 for now)
 
 function renderImgs(){
-  let randomItem = [];
+  // let randomItem = [];
   let itemOneIndex = getRandomIndex();
   let itemTwoIndex = getRandomIndex();
   let itemThreeIndex = getRandomIndex();
 
-  while(randomItem[0] === randomItem[1]){
-    randomItem[1] = getRandomIndex();
-  }
-  randomItem.push(getRandomIndex());
+  // while(randomItem[0] === randomItem[1]){
+  //   randomItem[1] = getRandomIndex();
+  //   randomItem.push(getRandomIndex());
+  // }
 
-  while(randomItem[2] === randomItem[0] || randomItem[2] === randomItem[1]);{
-    randomItem[2] = getRandomIndex();
-  }
-  // think Im getting an infinite loop
+  // while(randomItem[2] === randomItem[0] || randomItem[2] === randomItem[1]);{
+  //   randomItem[2] = getRandomIndex();
+  //   randomItem.push(getRandomIndex());
+  //   console.log(randomItem);
+  // }
+  // Hmm not quite
 
+  while (itemOneIndex === itemTwoIndex || itemOneIndex === itemThreeIndex || itemTwoIndex === itemThreeIndex){
+    itemThreeIndex = getRandomIndex();
+    itemTwoIndex = getRandomIndex();
+  }
+  
   imgOne.src = allItems[itemOneIndex].src;
   imgOne.alt = allItems[itemOneIndex].name;
   allItems[itemOneIndex].views++;
@@ -95,6 +103,7 @@ renderImgs();
 
 function handleClick(event){
   selectionsAllowed--;
+
   let imgClicked = event.target.alt;
 
   for(let i = 0; i < allItems.length; i++){
