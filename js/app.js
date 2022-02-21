@@ -61,28 +61,16 @@ function getRandomIndex(){
 // render imgs (only 2 for now)
 
 function renderImgs(){
-  // let randomItem = [];
   let itemOneIndex = getRandomIndex();
   let itemTwoIndex = getRandomIndex();
   let itemThreeIndex = getRandomIndex();
 
-  // while(randomItem[0] === randomItem[1]){
-  //   randomItem[1] = getRandomIndex();
-  //   randomItem.push(getRandomIndex());
-  // }
-
-  // while(randomItem[2] === randomItem[0] || randomItem[2] === randomItem[1]);{
-  //   randomItem[2] = getRandomIndex();
-  //   randomItem.push(getRandomIndex());
-  //   console.log(randomItem);
-  // }
-  // Hmm not quite
 
   while (itemOneIndex === itemTwoIndex || itemOneIndex === itemThreeIndex || itemTwoIndex === itemThreeIndex){
     itemThreeIndex = getRandomIndex();
     itemTwoIndex = getRandomIndex();
   }
-  
+
   imgOne.src = allItems[itemOneIndex].src;
   imgOne.alt = allItems[itemOneIndex].name;
   allItems[itemOneIndex].views++;
