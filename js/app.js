@@ -17,7 +17,7 @@ let imgThree = document.getElementById('img-three');
 
 let resultBtn = document.getElementById('show-results-btn');
 
-let showResults = document.getElementById('show-results-list');
+let showResults = document.getElementById('show-result-list');
 
 // Constructor
 
