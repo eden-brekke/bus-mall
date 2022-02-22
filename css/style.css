@@ -1,24 +1,55 @@
-#container {
-  display: grid;
-  grid-template-columns: auto auto auto;
+body {
+  background-color: rgba(241, 120, 195, 0.2);
 }
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: rgb(88, 40, 88);
+}
+#container {
+  display: flex;
+  justify-content: space-between;
+  border-width: 6px;
+  border-style: double;
+  border-color:black;
+  margin: 20px;
+}
+
 
 #img-one {
   height: 400px;
   width: 50%;
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
 }
 
 #img-two{
   height: 400px;
   width: 50%;
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
 }
 
 
 #img-three{
   height: 400px;
   width: 50%;
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
 }
 
+#myChart {
+  border-width: 5px;
+  border-radius: 2px;
+  border-color:black;
+}
 #show-results-btn {
   font-weight: bold;
   font-size: large;
