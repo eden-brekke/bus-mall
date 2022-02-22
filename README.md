@@ -72,3 +72,31 @@ What observations or questions do you have about what you’ve learned so far?<b
 In the demo Audrey mentioned using a container for the random image index generated, in order to get three unique images to show, I didn't do that but instead used while loops. So I'm quite curious what this other method would be. Intrigued <br>
 How long did it take you to complete this assignment? And, before you started, how long did you think it would take you to complete this assignment?<br>
 This assignment took me about 3 hours to complete. I thought it would take around that amount of time. Right on track. <br>
+
+## Lab 12
+
+### Instructions
+Below are your lab requirements in a user story format. Try and think up what the feature tasks would be for each story, once you are done, or you get stuck, review the provided feature tasks to see what the actual tasks are for each story.
+
+As a marketeer, I want to prevent users from seeing the same image in two subsequent iterations, so that they are not biased.
+Update your algorithm to randomly generate three unique product images from the images directory.
+Update your algorithm so that new products are generated, confirm that these products are not duplicates from the immediate previous set.
+As a marketing manager, I would like a visual representation of how many times a product was clicked so that I can visually analyze the results.
+
+Using ChartJS (imported from CDN), display the vote totals and the number of times a product was viewed in a bar chart format. (hint: don’t forget about the <canvas> tags)
+Place the bar chart in the section located beneath your three product images
+The bar charts should only appear after all voting data has been collected.
+
+### Author
+It's me! Eden 
+
+### Links and Resources 
+Mostly just followed the class demo for todays lab
+
+### Reflection and Comments 
+How did this go, overall? <br>
+This went pretty well, once Audrey showed us how to get 3 unique images with the push and pop method into and out of an array it was pretty easy for me to figure to put 6 images in and shift instead of pop. Just like a queue. I spent most of my time working on getting the colors I wanted for the chart and a little bit of CSS for styling purposes. <br>
+What observations or questions do you have about what you’ve learned so far?<br>
+Just continue to be impressed by all the neat things we can do with just the little amount of code we have learned so far <br>
+How long did it take you to complete this assignment? And, before you started, how long did you think it would take you to complete this assignment?<br>
+This assignment only took me about an hour and a half. <br>
