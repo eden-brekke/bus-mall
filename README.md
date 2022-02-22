@@ -60,7 +60,15 @@ Add a button with the text View Results, which when clicked displays the list of
 NOTE: Displayed product names should match the file name for the product. Example: the product represented with dog-duck.jpg should be displayed to the user as exactly “dog-duck” when the results are shown.
 
 ### Author
+It's me! Eden 
 
 ### Links and Resources 
+Mostly just followed the class demo for todays lab
 
 ### Reflection and Comments 
+How did this go, overall? <br>
+Today's lab was pretty easy for me since it was a lot of following the class demo, but also because I think I'm understanding the constructors pretty easily. I had a few small snags where I had small typos I wasn't noticing, but I worked through all of them pretty easily. <br>
+What observations or questions do you have about what you’ve learned so far?<br>
+In the demo Audrey mentioned using a container for the random image index generated, in order to get three unique images to show, I didn't do that but instead used while loops. So I'm quite curious what this other method would be. Intrigued <br>
+How long did it take you to complete this assignment? And, before you started, how long did you think it would take you to complete this assignment?<br>
+This assignment took me about 3 hours to complete. I thought it would take around that amount of time. Right on track.

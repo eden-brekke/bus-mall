@@ -2,7 +2,7 @@
 
 // Global Variables
 
-let selectionsAllowed = 25; // decremet to end item selection
+let selectionsAllowed = 25; // decrement to end item selection
 // let selectionsAllowed = 0; to end item selection
 
 // item storage
