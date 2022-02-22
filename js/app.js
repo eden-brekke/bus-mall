@@ -6,7 +6,7 @@ let selectionsAllowed = 25; // decrement to end item selection
 // let selectionsAllowed = 0; to end item selection
 
 // item storage
-let allItems =[];
+let allItems = [];
 
 // Dom windows
 let myContainer = document.getElementById('container');
@@ -21,7 +21,7 @@ let showResults = document.getElementById('show-result-list');
 
 // Constructor
 
-function Items(name, fileExtension = 'jpg'){
+function Items(name, fileExtension = 'jpg') {
   this.name = name;
   this.views = 0;
   this.selected = 0;
@@ -53,24 +53,33 @@ new Items('wine-glass');
 console.log(allItems);
 
 // random number between 0 and length of items array -1
-function getRandomIndex(){
-  return Math.floor(Math.random()* allItems.length);
+function getRandomIndex() {
+  return Math.floor(Math.random() * allItems.length);
 }
 
 // render imgs (only 2 for now)
+let randomIndexes = [];
 
-function renderImgs(){
-  let itemOneIndex = getRandomIndex();
-  let itemTwoIndex = getRandomIndex();
-  let itemThreeIndex = getRandomIndex();
+function renderImgs() {
 
-
-  while (itemOneIndex === itemTwoIndex){
-    itemTwoIndex = getRandomIndex();
+  while (randomIndexes.length < 3) {
+    let randoNum = getRandomIndex();
+    while (!randomIndexes.includes(randoNum)) {
+      //includes returns a boolean
+      randomIndexes.push(randoNum);
+    }
   }
-  while (itemOneIndex === itemThreeIndex || itemTwoIndex === itemThreeIndex){
-    itemThreeIndex = getRandomIndex();
-  }
+  let itemOneIndex = randomIndexes.pop();
+  let itemTwoIndex = randomIndexes.pop();
+  let itemThreeIndex = randomIndexes.pop();
+
+
+  // while (itemOneIndex === itemTwoIndex) {
+  //   itemTwoIndex = getRandomIndex();
+  // }
+  // while (itemOneIndex === itemThreeIndex || itemTwoIndex === itemThreeIndex) {
+  //   itemThreeIndex = getRandomIndex();
+  // }
 
   imgOne.src = allItems[itemOneIndex].src;
   imgOne.alt = allItems[itemOneIndex].name;
@@ -90,28 +99,28 @@ renderImgs();
 // Event listeners
 
 
-function handleClick(event){
+function handleClick(event) {
   selectionsAllowed--;
 
   let imgClicked = event.target.alt;
 
-  for(let i = 0; i < allItems.length; i++){
-    if(imgClicked === allItems[i].name){
+  for (let i = 0; i < allItems.length; i++) {
+    if (imgClicked === allItems[i].name) {
       allItems[i].selected++;
     }
   }
   renderImgs();
 
-  if(selectionsAllowed === 0){
+  if (selectionsAllowed === 0) {
     myContainer.removeEventListener('click', handleClick);
   }
 }
 
-function handleShowResults(event){  //eslint-disable-line
+function handleShowResults(event) {  //eslint-disable-line
   // if no more votes - then render a list
 
-  if(selectionsAllowed === 0){
-    for(let i = 0; i < allItems.length; i++){
+  if (selectionsAllowed === 0) {
+    for (let i = 0; i < allItems.length; i++) {
       let li = document.createElement('li');
       li.textContent = `${allItems[i].name} was viewed ${allItems[i].views} times, and was voted for ${allItems[i].selected} times.`;
       showResults.appendChild(li);
