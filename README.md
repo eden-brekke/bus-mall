@@ -71,4 +71,4 @@ Today's lab was pretty easy for me since it was a lot of following the class dem
 What observations or questions do you have about what you’ve learned so far?<br>
 In the demo Audrey mentioned using a container for the random image index generated, in order to get three unique images to show, I didn't do that but instead used while loops. So I'm quite curious what this other method would be. Intrigued <br>
 How long did it take you to complete this assignment? And, before you started, how long did you think it would take you to complete this assignment?<br>
-This assignment took me about 3 hours to complete. I thought it would take around that amount of time. Right on track.
+This assignment took me about 3 hours to complete. I thought it would take around that amount of time. Right on track. <br>
