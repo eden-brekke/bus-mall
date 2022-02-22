@@ -68,12 +68,11 @@ function renderImgs(){
   while (itemOneIndex === itemTwoIndex){
     itemTwoIndex = getRandomIndex();
   }
-  while (itemTwoIndex === itemThreeIndex){
+  while (itemOneIndex === itemThreeIndex || itemTwoIndex === itemThreeIndex){
     itemThreeIndex = getRandomIndex();
   }
-  while (itemOneIndex === itemThreeIndex){
-    itemOneIndex = getRandomIndex();
-  }
+ 
+
 
   imgOne.src = allItems[itemOneIndex].src;
   imgOne.alt = allItems[itemOneIndex].name;
