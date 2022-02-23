@@ -100,3 +100,25 @@ What observations or questions do you have about what you’ve learned so far?<b
 Just continue to be impressed by all the neat things we can do with just the little amount of code we have learned so far <br>
 How long did it take you to complete this assignment? And, before you started, how long did you think it would take you to complete this assignment?<br>
 This assignment only took me about an hour and a half. <br>
+
+## Lab 13 
+
+### Instructions 
+As a user, I would like my data to persistently track totals between page refreshes, so that I can keep track of the aggregate number of votes.
+
+Implement local storage into your current application
+Make sure the data persists across both browser refreshes and resets
+
+### Author
+It's me! Eden 
+
+### Links and Resources 
+Mostly just followed the class demo for todays lab
+
+### Reflection and Comments 
+How did this go, overall? <br>
+Things went well, Audrey was right that the local storage is a big concept to wrap your mind around but just a few easy lines of code. <br>
+What observations or questions do you have about what you’ve learned so far?<br>
+No questions! I thought that the local storage was interesting, I'm intrigued about the databases we'll learn later in the bootcamp. <br>
+How long did it take you to complete this assignment? And, before you started, how long did you think it would take you to complete this assignment?<br>
+This assignment only took me about a half hour, since it was just a few lines of code I estimated that it wouldn't take me very long. <br>
