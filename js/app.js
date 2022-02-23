@@ -204,7 +204,7 @@ function renderChart() {
       }]
     },
     options: {
-      indexAxis: 'y',
+      indexAxis: 'y', // changes the axis neat
       scales: {
         y: {
           beginAtZero: true
