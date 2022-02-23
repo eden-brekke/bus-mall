@@ -17,6 +17,11 @@ let imgThree = document.getElementById('img-three');
 
 let ctx = document.getElementById('myChart').getContext('2d');
 
+let retrieveItems = localStorage.getItem('items');
+console.log('Retrieved Items', retrieveItems);
+
+let parsedItems = JSON.parse(retrieveItems);
+console.log('Parsed Items', parsedItems);
 
 // Constructor
 
@@ -29,25 +34,29 @@ function Items(name, fileExtension = 'jpg') {
   allItems.push(this);
 }
 
-new Items('bag');
-new Items('banana');
-new Items('bathroom');
-new Items('boots');
-new Items('breakfast');
-new Items('bubblegum');
-new Items('chair');
-new Items('cthulhu');
-new Items('dog-duck');
-new Items('dragon');
-new Items('pen');
-new Items('pet-sweep');
-new Items('scissors');
-new Items('shark');
-new Items('sweep', 'png');
-new Items('tauntaun');
-new Items('unicorn');
-new Items('water-can');
-new Items('wine-glass');
+if (retrieveItems) {
+  allItems = parsedItems;
+} else {
+  new Items('bag');
+  new Items('banana');
+  new Items('bathroom');
+  new Items('boots');
+  new Items('breakfast');
+  new Items('bubblegum');
+  new Items('chair');
+  new Items('cthulhu');
+  new Items('dog-duck');
+  new Items('dragon');
+  new Items('pen');
+  new Items('pet-sweep');
+  new Items('scissors');
+  new Items('shark');
+  new Items('sweep', 'png');
+  new Items('tauntaun');
+  new Items('unicorn');
+  new Items('water-can');
+  new Items('wine-glass');
+}
 
 console.log(allItems);
 
@@ -106,6 +115,12 @@ function handleClick(event) {
   if (selectionsAllowed === 0) {
     myContainer.removeEventListener('click', handleClick);
     renderChart();
+
+    // step 1: get our data and stringify the data
+    let stringifiedItems = JSON.stringify(allItems);
+    console.log('Stringified Items', stringifiedItems);
+
+    localStorage.setItem('items', stringifiedItems);
   }
 }
 
@@ -128,38 +143,20 @@ function renderChart() {
         label: '# of Votes',
         data: itemSelections,
         backgroundColor: [
-          'rgba(117, 123, 200, 0.2)',
-          'rgba(129, 135, 220, 0.2)',
-          'rgba(142, 148, 242, 0.2)',
-          'rgba(159, 160, 255, 0.2)',
-          'rgba(173, 167, 255, 0.2)',
-          'rgba(187, 173, 255, 0.2)',
-          'rgba(203, 178, 254 , 0.2)',
-          'rgba(218, 182, 252 , 0.2)',
-          'rgba(221, 189, 252 , 0.2)',
-          'rgba(224, 195, 252 , 0.2)',
-          'rgba(117, 123, 200, 0.5)',
-          'rgba(129, 135, 220, 0.5)',
-          'rgba(142, 148, 242, 0.5)',
-          'rgba(159, 160, 255, 0.5)',
-          'rgba(173, 167, 255, 0.5)',
-          'rgba(187, 173, 255, 0.5)',
-          'rgba(203, 178, 254 , 0.5)',
-          'rgba(218, 182, 252 , 0.5)',
-          'rgba(221, 189, 252 , 0.5)',
-          'rgba(224, 195, 252 , 0.5)',
+          'rgba(230, 204, 255, 0.5)',
+          'rgba(206, 153, 255, 0.5)',
+          'rgba(217, 102, 255, 0.5)',
+          'rgba(181, 102, 255, 0.5)',
+          'rgba(156, 51, 255, 0.5)',
+          'rgba(153, 0, 153, 0.5)',
         ],
         borderColor: [
-          'rgba(117, 123, 200, 1)',
-          'rgba(129, 135, 220, 1)',
-          'rgba(142, 148, 242, 1)',
-          'rgba(159, 160, 255, 1)',
-          'rgba(173, 167, 255, 1)',
-          'rgba(187, 173, 255, 1)',
-          'rgba(203, 178, 254 , 1)',
-          'rgba(218, 182, 252 , 1)',
-          'rgba(221, 189, 252 , 1)',
-          'rgba(224, 195, 252 , 1)',
+          'rgba(230, 204, 255, 1)',
+          'rgba(206, 153, 255, 1)',
+          'rgba(217, 102, 255, 1)',
+          'rgba(181, 102, 255, 1)',
+          'rgba(156, 51, 255, 1)',
+          'rgba(153, 0, 153, 1)',
         ],
         borderWidth: 1
       },
@@ -167,38 +164,20 @@ function renderChart() {
         label: '# of Views',
         data: itemViews,
         backgroundColor: [
-          'rgba(102, 255, 242, 0.2)',
-          'rgba(110, 230, 239, 0.2)',
-          'rgba(118, 205, 235, 0.2)',
-          'rgba(125, 180, 232, 0.2)',
-          'rgba(133, 155, 229, 0.2)',
-          'rgba(141, 130, 225, 0.2)',
-          'rgba(149, 105, 222, 0.2)',
-          'rgba(156, 80, 219, 0.2)',
-          'rgba(164, 55, 215, 0.2)',
-          'rgba(172, 30, 212, 0.2)',
-          'rgba(102, 255, 242, 0.5)',
-          'rgba(110, 230, 239, 0.5)',
-          'rgba(118, 205, 235, 0.5)',
-          'rgba(125, 180, 232, 0.5)',
-          'rgba(133, 155, 229, 0.5)',
-          'rgba(141, 130, 225, 0.5)',
-          'rgba(149, 105, 222, 0.5)',
-          'rgba(156, 80, 219, 0.5)',
-          'rgba(164, 55, 215, 0.5)',
-          'rgba(172, 30, 212, 0.5)',
+          'rgba(204, 245, 255, 0.5)',
+          'rgba(153, 235, 255, 0.5)',
+          'rgba(102, 224, 255, 0.5)',
+          'rgba(26, 209, 255, 0.5)',
+          'rgba(0, 184, 230, 0.5)',
+          'rgba(0, 143, 179, 0.5)',
         ],
         borderColor: [
-          'rgba(102, 255, 242, 1)',
-          'rgba(110, 230, 239, 1)',
-          'rgba(118, 205, 235, 1)',
-          'rgba(125, 180, 232, 1)',
-          'rgba(133, 155, 229, 1)',
-          'rgba(141, 130, 225, 1)',
-          'rgba(149, 105, 222, 1)',
-          'rgba(156, 80, 219, 1)',
-          'rgba(164, 55, 215, 1)',
-          'rgba(172, 30, 212, 1)',
+          'rgba(204, 245, 255, 1)',
+          'rgba(153, 235, 255, 1)',
+          'rgba(102, 224, 255, 1)',
+          'rgba(26, 209, 255, 1)',
+          'rgba(0, 184, 230, 1)',
+          'rgba(0, 143, 179, 1)',
         ],
         borderWidth: 1
       }]
