@@ -3,28 +3,27 @@
 // Global Variables
 
 let selectionsAllowed = 25; // decrement to end item selection
-// let selectionsAllowed = 0; to end item selection
 
 // item storage
 let allItems = [];
 
 // Dom windows
 let myContainer = document.getElementById('container');
-
 let imgOne = document.getElementById('img-one');
 let imgTwo = document.getElementById('img-two');
 let imgThree = document.getElementById('img-three');
-
 let ctx = document.getElementById('myChart').getContext('2d');
 
+// Local Storage Retrieval
 let retrieveItems = localStorage.getItem('items');
 console.log('Retrieved Items', retrieveItems);
 
+// Local Storage De-stringifying
 let parsedItems = JSON.parse(retrieveItems);
 console.log('Parsed Items', parsedItems);
 
-// Constructor
 
+// Constructor
 function Items(name, fileExtension = 'jpg') {
   this.name = name;
   this.views = 0;
@@ -34,6 +33,7 @@ function Items(name, fileExtension = 'jpg') {
   allItems.push(this);
 }
 
+// If statement to either grab parsed Local storage or to instantiate new objects
 if (retrieveItems) {
   allItems = parsedItems;
 } else {
@@ -60,28 +60,31 @@ if (retrieveItems) {
 
 console.log(allItems);
 
+
 // random number between 0 and length of items array -1
 function getRandomIndex() {
   return Math.floor(Math.random() * allItems.length);
 }
 
-// render imgs (only 2 for now)
+// Empty Array to put 6 unique numbers in
 let randomIndexes = [];
-// think of an array as a queue if you have 3 num in there that gives 1 round then if you wanted to make sure you had 2 rounds, you could have 6  so you could push in from behind and shift from the front :O :O :O
+
+// Choose 6 unique numbers to correspond to item array indexs, grab the images from each index and render 3 at a time to the screen
 function renderImgs() {
 
+  // store 6 unique images to the empty global array
   while (randomIndexes.length < 6) {
     let randoNum = getRandomIndex();
     while (!randomIndexes.includes(randoNum)) {
-      //includes returns a boolean
       randomIndexes.push(randoNum);
     }
   }
+  // shift the number from the front of randomIndexes array
   let itemOneIndex = randomIndexes.shift();
   let itemTwoIndex = randomIndexes.shift();
   let itemThreeIndex = randomIndexes.shift();
 
-
+  // assign the item index to elements in HTML
   imgOne.src = allItems[itemOneIndex].src;
   imgOne.alt = allItems[itemOneIndex].name;
   allItems[itemOneIndex].views++;
@@ -97,9 +100,8 @@ function renderImgs() {
 
 renderImgs();
 
+
 // Event listeners
-
-
 function handleClick(event) {
   selectionsAllowed--;
 
@@ -116,7 +118,7 @@ function handleClick(event) {
     myContainer.removeEventListener('click', handleClick);
     renderChart();
 
-    // step 1: get our data and stringify the data
+    // step 1: get our data and stringify the data to put in local storage
     let stringifiedItems = JSON.stringify(allItems);
     console.log('Stringified Items', stringifiedItems);
 
@@ -124,6 +126,7 @@ function handleClick(event) {
   }
 }
 
+// Render the chart to show Items, the Views of the items and the selections.
 function renderChart() {
   let itemNames = [];
   let itemSelections = [];
@@ -139,7 +142,7 @@ function renderChart() {
     type: 'bar',
     data: {
       labels: itemNames,
-      datasets: [{ // this is an object you can add it within the array of datasets again, so you get double bars. Number of clicks vs number of views in the label
+      datasets: [{
         label: '# of Votes',
         data: itemSelections,
         backgroundColor: [
@@ -183,7 +186,7 @@ function renderChart() {
       }]
     },
     options: {
-      indexAxis: 'y', // changes the axis neat
+      indexAxis: 'y',
       scales: {
         y: {
           beginAtZero: true
@@ -198,10 +201,5 @@ function renderChart() {
 
 
 
-// grab what we want to listen to
+// Grab what we want to listen to
 myContainer.addEventListener('click', handleClick);
-
-
-
-
-
